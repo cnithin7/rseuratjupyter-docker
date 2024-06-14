@@ -18,11 +18,11 @@ Will be updated constantly on need-basis.
 
 1. Pull the Docker image:
 
--docker pull cnithin7/rseuratjupyter
+- docker pull cnithin7/rseuratjupyter
 
 2. Run the container and map the ports:
 
--docker run -p 8888:8888 -v $(pwd):/workspace cnithin7/rseuratjupyter
+- docker run -p 8888:8888 -v $(pwd):/workspace cnithin7/rseuratjupyter
 
 After running the above command, you will see an output with a URL to run jupyter notebook with R kernel. You can now start using the pre-installed packages.
 

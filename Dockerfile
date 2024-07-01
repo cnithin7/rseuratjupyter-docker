@@ -11,7 +11,8 @@ RUN pip install jupyter \
     && R -e "install.packages('IRkernel', repos='http://cran.us.r-project.org')" \
     && R -e "IRkernel::installspec(user = FALSE)"
 
-RUN R -e 'remotes::install_github("satijalab/seurat", ref="seurat5", quiet=TRUE)'
+RUN R -e 'remotes::install_github("satijalab/seurat", ref="seurat5", quiet=TRUE); remotes::install_github("satijalab/seurat-wrappers")'
+
 
 RUN R -e 'devtools::install_github("cole-trapnell-lab/monocle3")'
 

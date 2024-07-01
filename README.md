@@ -6,7 +6,7 @@ Features
 
 - Jupyter Notebook with R kernel (4.4.0)
 - Pre-installed Bioconductor packages:
-  - `multtest`, `S4Vectors`, `SummarizedExperiment`, `SingleCellExperiment`, `MAST`, `DESeq2`, `BiocGenerics`, `GenomicRanges`, `IRanges`, `rtracklayer`, `monocle`, `Biobase`, `limma`, `glmGamPoi`, `SingleR`, `scRepertoire`, `cowplot`, `singlecellTK`,`rhdf5`,`celldex`
+  - `multtest`, `S4Vectors`, `SummarizedExperiment`, `SingleCellExperiment`, `MAST`, `DESeq2`, `BiocGenerics`, `GenomicRanges`, `IRanges`, `rtracklayer`, `monocle`, `Biobase`, `limma`, `glmGamPoi`, `SingleR`, `scRepertoire`, `cowplot`, `singlecellTK`,`rhdf5`,`celldex`, `monocle3`,`SeuratWrappers`
 - Pre-installed `tidyverse` package for data science tasks
 - TensorFlow installed via Python
 - Seurat - for Singlecell Rna analysis workflow.

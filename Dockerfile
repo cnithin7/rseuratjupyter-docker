@@ -13,6 +13,8 @@ RUN pip install jupyter \
 
 RUN R -e 'remotes::install_github("satijalab/seurat", ref="seurat5", quiet=TRUE)'
 
+RUN R -e 'devtools::install_github("cole-trapnell-lab/monocle3")'
+
 RUN R -e 'install.packages("tidyverse", repos="http://cran.us.r-project.org")'
 
 WORKDIR /workspace

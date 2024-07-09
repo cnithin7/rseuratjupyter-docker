@@ -7,10 +7,9 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/*
 
 # Install various Bioconductor packages
-RUN R -e "BiocManager::install(c('multtest', 'S4Vectors', 'SummarizedExperiment', 'SingleCellExperiment', 'MAST', 'DESeq2', 'BiocGenerics', 'GenomicRanges', 'IRanges', 'rtracklayer', 'monocle', 'Biobase', 'limma', 'glmGamPoi', 'SingleR','scRepertoire','cowplot','celldex','rhdf5','singleCellTK','ComplexHeatmap'))"
+RUN R -e "BiocManager::install(c('multtest', 'S4Vectors', 'SummarizedExperiment', 'SingleCellExperiment', 'MAST', 'DESeq2', 'BiocGenerics', 'GenomicRanges', 'IRanges', 'rtracklayer', 'monocle', 'Biobase', 'limma', 'glmGamPoi', 'SingleR','scRepertoire','cowplot','celldex','rhdf5','singleCellTK','ComplexHeatmap', 'biomaRt'))"
 
-# Add installation of biomaRt
-RUN R -e "source('https://bioconductor.org/biocLite.R'); biocLite('biomaRt')"
+
 
 # Install Jupyter and IRkernel
 RUN pip install jupyter \

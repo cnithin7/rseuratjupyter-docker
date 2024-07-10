@@ -17,7 +17,7 @@ RUN pip install jupyter \
     && R -e "IRkernel::installspec(user = FALSE)"
 
 # Install additional R packages from GitHub
-RUN R -e 'remotes::install_github("satijalab/seurat", ref="seurat5", quiet=TRUE); remotes::install_github("satijalab/seurat-wrappers"); remotes::install_github("chris-mcginnis-ucsf/DoubletFinder")'
+RUN R -e 'remotes::install_github("satijalab/seurat-wrappers"); remotes::install_github("chris-mcginnis-ucsf/DoubletFinder")'
 RUN R -e 'devtools::install_github("cole-trapnell-lab/monocle3")'
 RUN R -e 'devtools::install_github("digitalcytometry/cytotrace2", subdir = "cytotrace2_r")'
 RUN R -e 'devtools::install_github("diazlab/CONICS/CONICSmat", dep = FALSE)'
@@ -33,6 +33,7 @@ RUN R -e 'install.packages("mixtools")'
 RUN R -e 'install.packages("pheatmap")'
 RUN R -e 'install.packages("zoo", repos="http://cran.us.r-project.org")'
 RUN R -e 'install.packages("squash", repos="http://cran.us.r-project.org")'
+RUN R -e 'install.packages("Seurat")'
 
 WORKDIR /workspace
 

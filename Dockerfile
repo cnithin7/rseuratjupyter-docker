@@ -23,6 +23,11 @@ RUN R -e 'devtools::install_github("digitalcytometry/cytotrace2", subdir = "cyto
 RUN R -e 'devtools::install_github("diazlab/CONICS/CONICSmat", dep = FALSE)'
 RUN R -e 'devtools::install_github("arc85/singleseqgset")'
 
+RUN R -e 'remotes::install_github("satijalab/seurat-data", "seurat5", quiet = TRUE)'
+RUN R -e 'remotes::install_github("satijalab/azimuth", "seurat5", quiet = TRUE)'
+RUN R -e 'remotes::install_github("satijalab/seurat-wrappers", "seurat5", quiet = TRUE)'
+RUN R -e 'remotes::install_github("stuart-lab/signac", "seurat5", quiet = TRUE)'
+
 # Install additional CRAN packages
 RUN R -e 'install.packages("tidyverse", repos="http://cran.us.r-project.org")'
 RUN R -e 'install.packages("ggrepel", repos="http://cran.us.r-project.org")'

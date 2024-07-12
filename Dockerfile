@@ -17,14 +17,12 @@ RUN pip3 install jupyter \
 
 # Install additional R packages from GitHub
 RUN R -e 'remotes::install_github("chris-mcginnis-ucsf/DoubletFinder")' \
-    && R -e 'remotes::install_github("satijalab/seurat-data", ref = "seurat5", quiet = TRUE)' \
-    && R -e 'remotes::install_github("satijalab/azimuth", ref = "seurat5", quiet = TRUE)' \
     && R -e 'devtools::install_github("cole-trapnell-lab/monocle3")' \
     && R -e 'devtools::install_github("digitalcytometry/cytotrace2", subdir = "cytotrace2_r")' \
     && R -e 'devtools::install_github("diazlab/CONICS/CONICSmat", dep = FALSE)' \
     && R -e 'devtools::install_github("arc85/singleseqgset")' \
-    && R -e 'remotes::install_github("satijalab/seurat-wrappers", ref = "seurat5", quiet = TRUE)' \
-    && R -e 'remotes::install_github("stuart-lab/signac", ref = "seurat5", quiet = TRUE)'
+    && R -e  'remotes::install_github("satijalab/seurat", "seurat5", quiet = TRUE)'
+
 
 # Install additional CRAN packages
 RUN R -e 'install.packages("tidyverse", repos="http://cran.us.r-project.org")' \
@@ -36,6 +34,8 @@ RUN R -e 'install.packages("tidyverse", repos="http://cran.us.r-project.org")' \
     && R -e 'install.packages("pheatmap", repos="http://cran.us.r-project.org")' \
     && R -e 'install.packages("zoo", repos="http://cran.us.r-project.org")' \
     && R -e 'install.packages("squash", repos="http://cran.us.r-project.org")'
+
+
 
 WORKDIR /workspace
 

@@ -8,7 +8,7 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/*
 
 # Install various Bioconductor packages
-RUN R -e "BiocManager::install(c('multtest', 'S4Vectors', 'SummarizedExperiment', 'SingleCellExperiment', 'MAST', 'DESeq2', 'BiocGenerics', 'GenomicRanges', 'IRanges', 'rtracklayer', 'monocle', 'Biobase', 'limma', 'glmGamPoi', 'SingleR', 'scRepertoire', 'cowplot', 'celldex', 'rhdf5', 'singleCellTK', 'ComplexHeatmap', 'biomaRt'))"
+RUN R -e "BiocManager::install(c('multtest', 'S4Vectors', 'SummarizedExperiment', 'SingleCellExperiment', 'MAST', 'DESeq2', 'BiocGenerics', 'GenomicRanges', 'IRanges', 'rtracklayer', 'monocle', 'Biobase', 'limma', 'glmGamPoi', 'SingleR', 'scRepertoire', 'cowplot', 'celldex', 'rhdf5', 'singleCellTK', 'ComplexHeatmap'))"
 
 # Install Jupyter and IRkernel
 RUN pip3 install jupyter \
@@ -19,23 +19,17 @@ RUN pip3 install jupyter \
 RUN R -e 'remotes::install_github("chris-mcginnis-ucsf/DoubletFinder")' \
     && R -e 'devtools::install_github("cole-trapnell-lab/monocle3")' \
     && R -e 'devtools::install_github("digitalcytometry/cytotrace2", subdir = "cytotrace2_r")' \
-    && R -e 'devtools::install_github("diazlab/CONICS/CONICSmat", dep = FALSE)' \
     && R -e 'devtools::install_github("arc85/singleseqgset")' \
     && R -e  'remotes::install_github("satijalab/seurat", "seurat5", quiet = TRUE)'
 
-
 # Install additional CRAN packages
-RUN R -e 'install.packages("tidyverse", repos="http://cran.us.r-project.org")' \
-    && R -e 'install.packages("ggrepel", repos="http://cran.us.r-project.org")' \
-    && R -e 'install.packages("ggplotify", repos="http://cran.us.r-project.org")' \
-    && R -e 'install.packages("gtools", repos="http://cran.us.r-project.org")' \
-    && R -e 'install.packages("beanplot", repos="http://cran.us.r-project.org")' \
-    && R -e 'install.packages("mixtools", repos="http://cran.us.r-project.org")' \
-    && R -e 'install.packages("pheatmap", repos="http://cran.us.r-project.org")' \
-    && R -e 'install.packages("zoo", repos="http://cran.us.r-project.org")' \
-    && R -e 'install.packages("squash", repos="http://cran.us.r-project.org")'
+RUN R -e 'install.packages(c("tidyverse", "ggrepel", "ggplotify", "gtools", "beanplot", "mixtools", "pheatmap", "zoo", "squash"), repos="http://cran.us.r-project.org")'
 
+# Install additional Bioconductor package
+RUN R -e "BiocManager::install('biomaRt')"
 
+# Install CONICSmat from GitHub
+RUN R -e 'devtools::install_github("diazlab/CONICS/CONICSmat", dep = FALSE)'
 
 WORKDIR /workspace
 

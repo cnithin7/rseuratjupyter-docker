@@ -23,7 +23,7 @@ RUN R -e 'remotes::install_github("chris-mcginnis-ucsf/DoubletFinder")' \
     && R -e  'remotes::install_github("satijalab/seurat", "seurat5", quiet = TRUE)'
 
 # Install additional CRAN packages
-RUN R -e 'install.packages(c("tidyverse", "ggrepel", "ggplotify", "gtools", "beanplot", "mixtools", "pheatmap", "zoo", "squash"), repos="http://cran.us.r-project.org")'
+RUN R -e 'install.packages(c("tidyverse", "ggrepel", "ggplotify", "gtools", "beanplot", "mixtools", "pheatmap", "zoo", "squash","scCustomize","harmony"), repos="http://cran.us.r-project.org")'
 
 # Install additional Bioconductor package
 RUN R -e "BiocManager::install('biomaRt')"

@@ -1,11 +1,16 @@
 FROM bioconductor/bioconductor_docker:devel
 
-# Update apt-get and install TensorFlow
+# Update apt-get and install necessary packages
 RUN apt-get update \
-    && apt-get install -y python3-pip \
+    && apt-get install -y python3-pip wget gdebi-core \
     && pip3 install tensorflow \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
+
+# Install RStudio Server
+RUN wget https://download2.rstudio.org/rstudio-server-debian9_1.4.1717_amd64.deb \
+    && gdebi -n rstudio-server-debian9_1.4.1717_amd64.deb \
+    && rm rstudio-server-debian9_1.4.1717_amd64.deb
 
 # Install various Bioconductor packages
 RUN R -e "BiocManager::install(c('multtest', 'S4Vectors', 'SummarizedExperiment', 'SingleCellExperiment', 'MAST', 'DESeq2', 'BiocGenerics', 'GenomicRanges', 'IRanges', 'rtracklayer', 'monocle', 'Biobase', 'limma', 'glmGamPoi', 'SingleR', 'scRepertoire', 'cowplot', 'celldex', 'rhdf5', 'singleCellTK', 'ComplexHeatmap'))"
@@ -31,8 +36,11 @@ RUN R -e "BiocManager::install('biomaRt')"
 # Install CONICSmat from GitHub
 RUN R -e 'devtools::install_github("diazlab/CONICS/CONICSmat", dep = FALSE)'
 
+# Set working directory
 WORKDIR /workspace
 
-EXPOSE 8888
+# Expose ports for Jupyter and RStudio Server
+EXPOSE 8888 8787
 
-CMD ["jupyter", "notebook", "--ip=0.0.0.0", "--port=8888", "--no-browser", "--allow-root"]
+# Start Jupyter Notebook and RStudio Server
+CMD ["sh", "-c", "jupyter notebook --ip=0.0.0.0 --port=8888 --no-browser --allow-root & rstudio-server start && tail -f /var/log/rstudio-server/rstudio-server.log"]

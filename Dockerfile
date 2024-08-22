@@ -8,9 +8,9 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/*
 
 # Install RStudio Server
-RUN wget https://download2.rstudio.org/rstudio-server-debian9_1.4.1717_amd64.deb \
-    && gdebi -n rstudio-server-debian9_1.4.1717_amd64.deb \
-    && rm rstudio-server-debian9_1.4.1717_amd64.deb
+RUN wget https://download2.rstudio.org/server/focal/amd64/rstudio-server-2024.04.2-764-amd64.deb \
+    && gdebi rstudio-server-2024.04.2-764-amd64.deb \
+    && rm rstudio-server-2024.04.2-764-amd64.deb
 
 # Install various Bioconductor packages
 RUN R -e "BiocManager::install(c('multtest', 'S4Vectors', 'SummarizedExperiment', 'SingleCellExperiment', 'MAST', 'DESeq2', 'BiocGenerics', 'GenomicRanges', 'IRanges', 'rtracklayer', 'monocle', 'Biobase', 'limma', 'glmGamPoi', 'SingleR', 'scRepertoire', 'cowplot', 'celldex', 'rhdf5', 'singleCellTK', 'ComplexHeatmap'))"

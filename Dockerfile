@@ -8,7 +8,7 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/*
 
 # Install various Bioconductor packages
-RUN R -e "BiocManager::install(c('multtest', 'S4Vectors', 'SummarizedExperiment', 'SingleCellExperiment', 'MAST', 'DESeq2', 'BiocGenerics', 'GenomicRanges', 'IRanges', 'rtracklayer', 'monocle', 'Biobase', 'limma', 'glmGamPoi', 'SingleR', 'scRepertoire', 'cowplot', 'celldex', 'rhdf5', 'singleCellTK', 'ComplexHeatmap', 'TFBSTools'))"
+RUN R -e "BiocManager::install(c('multtest', 'S4Vectors', 'SummarizedExperiment', 'SingleCellExperiment', 'MAST', 'DESeq2', 'BiocGenerics', 'GenomicRanges', 'IRanges', 'rtracklayer', 'monocle', 'Biobase', 'limma', 'glmGamPoi', 'SingleR', 'scRepertoire', 'cowplot', 'celldex', 'rhdf5', 'singleCellTK', 'ComplexHeatmap', 'TFBSTools', 'BSgenome.Hsapiens.UCSC.hg38', 'EnsDb.Hsapiens.v86'))"
 
 # Install Jupyter and IRkernel
 RUN pip3 install jupyter \
@@ -21,7 +21,7 @@ RUN R -e 'remotes::install_github("chris-mcginnis-ucsf/DoubletFinder")' \
     && R -e 'devtools::install_github("digitalcytometry/cytotrace2", subdir = "cytotrace2_r")' \
     && R -e 'devtools::install_github("arc85/singleseqgset")' \
     && R -e 'remotes::install_github("satijalab/seurat@seurat5", quiet = TRUE)' \
-    && R -e 'remotes::install_github("satijalab/azimuth", ref = 'master')'
+    && R -e 'remotes::install_github("satijalab/azimuth", ref = master)'
 
 # Install additional CRAN packages
 RUN R -e 'install.packages(c("tidyverse", "ggrepel", "ggplotify", "gtools", "beanplot", "mixtools", "pheatmap", "zoo", "squash","scCustomize","harmony"), repos="http://cran.us.r-project.org")'

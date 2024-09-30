@@ -21,7 +21,8 @@ RUN R -e 'remotes::install_github("chris-mcginnis-ucsf/DoubletFinder")' \
     && R -e 'devtools::install_github("digitalcytometry/cytotrace2", subdir = "cytotrace2_r")' \
     && R -e 'devtools::install_github("arc85/singleseqgset")' \
     && R -e 'remotes::install_github("satijalab/seurat@seurat5", quiet = TRUE)'\
-    && R -e 'remotes::install_github("saezlab/liana")'
+    && R -e 'remotes::install_github("saezlab/liana")' \
+    && R -e 'devtools::install_github("navinlabcode/copykat")'
 
 # Install additional CRAN packages
 RUN R -e 'install.packages(c("tidyverse", "ggrepel", "ggplotify", "gtools", "beanplot", "mixtools", "pheatmap", "zoo", "squash","scCustomize","harmony"), repos="http://cran.us.r-project.org")'
